@@ -17,7 +17,7 @@ export default function useProducts() {
 
 
     useEffect(() => {
-        console.log("useEffect is running");
+        // console.log("useEffect is running");
         fetch('/api/products')
           .then(response => response.json())
           .then(json => setProducts(json));

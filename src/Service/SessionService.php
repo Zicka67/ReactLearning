@@ -63,7 +63,7 @@ class SessionService
         $existingShoppingCartItem = $this
             ->getShoppingCart()
             ->items
-            ->filter(fn (ShoppingCartItem $item) => $item->product->getId() )
+            ->filter(fn (ShoppingCartItem $item) => $item->product->getId() === $product->getId())
             ->first();
 
             if (false == $existingShoppingCartItem) {

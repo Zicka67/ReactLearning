@@ -3,16 +3,19 @@ import { AppBar, Badge, Grid, IconButton, Toolbar } from "@mui/material";
 import  StoreIcon from "@mui/icons-material/Store";
 import  ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { visit } from "../../utils";
-import { ShoppingBasket } from "@mui/icons-material";
 
 
-export default function Header() {
+export default function Header({ shoppingCart }) {
         const showHome = () => {
         visit( '/');
     }
 
     const showShoppingCart = () => {
         visit( '/shopping-cart');
+    }
+
+    const calculateTotalQuantity = () => {
+        return shoppingCart?.items?.map((item) => item.quantity).reduce((a,b) => a + b, 0);
     }
 
     return (
@@ -26,7 +29,7 @@ export default function Header() {
                     </Grid>
                     <Grid item>
                             <IconButton color="inherit" onClick={showShoppingCart}>
-                                <Badge badgeContent={0} color="secondary">
+                                <Badge badgeContent={calculateTotalQuantity()} color="secondary">
                                 </Badge>
                                 <ShoppingBasketIcon/>
                             </IconButton>

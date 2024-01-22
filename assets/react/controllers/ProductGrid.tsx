@@ -1,15 +1,20 @@
 import React from "react";
 import { Box, Grid, Paper, Typography, Button, Stack } from "@mui/material";
-import useProducts from "../hooks/useProducts";
+import useProducts, { Product } from "../hooks/useProducts";
 import { formatPrice } from "../../utils";
 import { ShoppingBasket } from "@mui/icons-material";
 
-export default function ProductGrid() {
+export default function ProductGrid({ addItemToShoppingCart, shoppingCart}) {
     const products = useProducts();
 
-    console.log(products);
+    const handleProductLabel = (product: Product) => {
+        const productInShoppingCart  = shoppingCart?.items?.find(item => item.product.id === product.id);
 
+        return productInShoppingCart ? `${productInShoppingCart.quantity} x` : 'Ajouter au panier';
 
+    }
+
+ 
     return (
         <Grid container marginTop={5}>
          {products?.map((product) =>(
@@ -30,9 +35,12 @@ export default function ProductGrid() {
                                 </Typography>
                             </Box>
 
-                            <Button variant="outlined" color="primary" endIcon={<ShoppingBasket/>}
+                            <Button variant="outlined" 
+                                color="primary" 
+                                endIcon={<ShoppingBasket/>}
+                                onClick={() => addItemToShoppingCart(product)}
                             >
-                            Ajouter au panier
+                            {handleProductLabel(product)}
                             </Button>
                         </Stack>
                     </Paper>

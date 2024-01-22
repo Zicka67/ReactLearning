@@ -22,7 +22,7 @@ class SessionController extends AbstractController
         return $this->json($this->sessionService->getShoppingCart());
     }
 
-    #[Route('/session/shopping-cart/{id}', name: 'session_add_item_to_shopping_cart')] /*  METHODE POST ET GET A METTRE */
+    #[Route('/session/shopping-cart/{id}', name: 'session_add_item_to_shopping_cart', methods: ['POST'])] /*  METHODE POST ET GET A METTRE ? */
     public function addItemToShoppingCart(?Product $product): Response 
     {
 
