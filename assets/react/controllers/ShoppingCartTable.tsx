@@ -34,8 +34,8 @@ export default function ShoppingCartTable( {removeItemFromShoppingCart, shopping
                         <TableCell>{item.quantity}</TableCell> 
                         <TableCell>{item.product.price}</TableCell>
                         <TableCell>
-                            <IconButton>
-                                <ClearIcon onClick={() => removeItemFromShoppingCart(item.product)}></ClearIcon>
+                            <IconButton onClick={() => removeItemFromShoppingCart(item.product)}>
+                                <ClearIcon />
                             </IconButton>
                         </TableCell>
                     </TableRow>
