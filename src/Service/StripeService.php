@@ -58,7 +58,13 @@ class StripeService
             'line_items' => $lineItems,
             'mode' => 'payment',
             'success_url' => 'https://localhost:8000/stripe/success?session_id={CHECKOUT_SESSION_ID}',
+            'payment_method_types' => ['card'],
         ]);
+    }
+
+    public function getCheckoutSession(string $sessionId): Session
+    {
+        return $this->getStripe()->checkout->sessions->retrieve($sessionId);
     }
 
     private function getStripe(): StripeClient
