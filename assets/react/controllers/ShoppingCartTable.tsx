@@ -4,6 +4,12 @@ import { ShoppingCartItem } from "../hooks/useShoppingCart";
 import ClearIcon from "@mui/icons-material/Clear";
 
 export default function ShoppingCartTable( {removeItemFromShoppingCart, shoppingCart} ) {
+
+    // Dans le composant ShoppingCartTable
+    const totalQuantity = shoppingCart?.items?.reduce((total, item) => total + item.quantity, 0) ?? 0;
+    const totalPrice = shoppingCart?.items?.reduce((total, item) => total + item.quantity * item.product.price, 0) ?? 0;
+
+    
     return (
         <TableContainer>
             <Table>
@@ -32,7 +38,7 @@ export default function ShoppingCartTable( {removeItemFromShoppingCart, shopping
                             </Box>
                         </TableCell>
                         <TableCell>{item.quantity}</TableCell> 
-                        <TableCell>{item.product.price}</TableCell>
+                        <TableCell>{item.product.price} €</TableCell>
                         <TableCell>
                             <IconButton onClick={() => removeItemFromShoppingCart(item.product)}>
                                 <ClearIcon />
@@ -40,6 +46,12 @@ export default function ShoppingCartTable( {removeItemFromShoppingCart, shopping
                         </TableCell>
                     </TableRow>
                     ))}
+                     <TableRow>
+                        <TableCell>Total</TableCell>
+                        <TableCell>{totalQuantity}</TableCell>
+                        <TableCell>{totalPrice.toFixed(2)} €</TableCell>
+                        <TableCell /> {/* Cette cellule est vide pour correspondre aux autres lignes */}
+                    </TableRow>
                 </TableBody>
             </Table>
         </TableContainer>

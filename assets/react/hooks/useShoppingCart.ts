@@ -11,8 +11,8 @@ export interface ShoppingCartItem {
 }
 
 export default function useShoppigCart() {
-    const [shoppingCart, setShoppingCart] = useState<ShoppingCart>();
-    const [loading, setLoading] = useState(false);
+  const [shoppingCart, setShoppingCart] = useState<ShoppingCart>({ items: [] });
+  const [loading, setLoading] = useState(false);
 
     const addItemToShoppingCart = (product : Product) => {
       console.log('Ajout du produit avec l\'ID:', product.id);
@@ -40,14 +40,15 @@ export default function useShoppigCart() {
     }
 
     useEffect(() => {
-        setLoading(true);
-        fetch(`/session/shopping-cart`)
-          .then(response => response.json())
-          .then(json => setShoppingCart(json))
-          .finally(() => {
-            setLoading(false);
-          });
-      }, []);
+      setLoading(true);
+      fetch(`/session/shopping-cart`)
+        .then(response => response.json())
+        .then(json => setShoppingCart(json))
+        .catch((error) => console.error('Error fetching shopping cart:', error)) 
+        .finally(() => {
+          setLoading(false);
+        });
+    }, []);
       
 
     return {
@@ -56,4 +57,7 @@ export default function useShoppigCart() {
         loading,
         removeItemFromShoppingCart
     };
+
+
+    
 }
