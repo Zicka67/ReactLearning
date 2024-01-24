@@ -7,7 +7,7 @@ import { visit } from "../../utils";
 
 export default function ShoppingCart(){
 
-    const {removeItemFromShoppingCart, shoppingCart: ShoppingCart} = useShoppingCart();
+    const {removeItemFromShoppingCart, shoppingCart} = useShoppingCart();
 
     const createCheckoutSession = () => {
         fetch('/stripe/checkout-sessions', {
@@ -21,7 +21,7 @@ export default function ShoppingCart(){
 
     return (
         <>
-            <Header shoppingCart={ShoppingCart} />
+            <Header shoppingCart={shoppingCart} />
             <Container>
                 <Box marginY={5}> 
                     <Grid container justifyContent="space-between" alignContent="center">
@@ -37,7 +37,7 @@ export default function ShoppingCart(){
                 </Box>
                 <ShoppingCartTable 
                 removeItemFromShoppingCart={removeItemFromShoppingCart}
-                shoppingCart={ShoppingCart}
+                shoppingCart={shoppingCart}
                 />
             </Container>
      
