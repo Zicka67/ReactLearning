@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Badge, Grid, IconButton, Toolbar } from "@mui/material";
+import { AppBar, Badge, Grid, IconButton, Toolbar, Typography, Button } from "@mui/material";
 import  StoreIcon from "@mui/icons-material/Store";
 import  ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { visit } from "../../utils";
@@ -26,6 +26,15 @@ export default function Header({ shoppingCart }) {
                         <IconButton color="inherit" onClick={showHome}>
                             <StoreIcon/>
                         </IconButton>
+                    </Grid>
+                    {/* <div>
+                        <h1>Hello World</h1>
+                        <p>Ceci est un paragraphe HTML intégré dans un fichier .tsx.</p>
+                    </div> */}
+                    <Grid item>
+                        <Button color="inherit" onClick={() => visit('/')}>Accueil</Button>
+                        <Button color="inherit" onClick={() => visit('/admin')}>Admin</Button>
+                        <Button color="inherit" onClick={() => visit('/subscription')}>S'inscrire</Button>
                     </Grid>
                     <Grid item>
                             <IconButton color="inherit" onClick={showShoppingCart}>
