@@ -23,6 +23,7 @@
         "symfony/framework-bundle": "6.3.*",
         "symfony/http-client": "6.3.*",
         "symfony/intl": "6.3.*",
+        "symfony/mailer": "6.3.*",
         "symfony/mime": "6.3.*",
         "symfony/monolog-bundle": "^3.10",
         "symfony/process": "6.3.*",
@@ -40,6 +41,7 @@
         "symfony/web-link": "6.3.*",
         "symfony/webpack-encore-bundle": "^2.1",
         "symfony/yaml": "6.3.*",
+        "symfonycasts/verify-email-bundle": "^1.16",
         "twig/extra-bundle": "^2.12|^3.7.1",
         "twig/twig": "^2.12|^3.7.1",
         "vich/uploader-bundle": "^2.2"
