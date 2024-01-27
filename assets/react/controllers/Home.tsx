@@ -15,7 +15,7 @@ export default function Home(): React.JSX.Element {
             <>
                 {/* <ButtonAppBar /> */}
                 {/* <SignInSide /> */}
-                <Header shoppingCart={ShoppingCart}/>
+                {/* <Header shoppingCart={ShoppingCart}/> */}
                 <ProductGrid addItemToShoppingCart={addItemToShoppingCart} shoppingCart={ShoppingCart}/>
             </>
         )

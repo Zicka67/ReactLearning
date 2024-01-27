@@ -1,0 +1,12 @@
+header {
+    margin-bottom: 100px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  footer {
+    margin-top: auto;
+  }

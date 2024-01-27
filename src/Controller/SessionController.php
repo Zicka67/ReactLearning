@@ -43,4 +43,5 @@ class SessionController extends AbstractController
 
         return $this->json($this->sessionService->getShoppingCart());
     }
+    
 }

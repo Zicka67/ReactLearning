@@ -19,65 +19,34 @@ export default function Header({ shoppingCart }) {
     }
 
     return (
-        <AppBar position="static">
-            <Toolbar>
-                <Grid container justifyContent="space-between" alignItems="center" style={{ width: '100%' }}>
-                    <Grid item>
-                        <IconButton color="inherit" onClick={showHome}>
-                            <StoreIcon/>
-                        </IconButton>
-                    </Grid>
-                    {/* <div>
-                        <h1>Hello World</h1>
-                        <p>Ceci est un paragraphe HTML intégré dans un fichier .tsx.</p>
-                    </div> */}
-                    <Grid item>
-                        <Button color="inherit" onClick={() => visit('/')}>Accueil</Button>
-                        <Button color="inherit" onClick={() => visit('/admin')}>Admin</Button>
-                        <Button color="inherit" onClick={() => visit('/subscription')}>S'inscrire</Button>
-                    </Grid>
-                    <Grid item>
+        <>
+            <AppBar position="fixed" style={{ width: '100%', zIndex: 1100 }}>
+                <Toolbar>
+                    <Grid container justifyContent="space-between" alignItems="center" style={{ width: '100%' }}>
+                        <Grid item>
+                            <IconButton color="inherit" onClick={showHome}>
+                                <StoreIcon />
+                            </IconButton>
+                        </Grid>
+                        <Grid item>
+                            <Button color="inherit" onClick={() => visit('/')}>Accueil</Button>
+                            <Button color="inherit" onClick={() => visit('/admin')}>Admin</Button>
+                            <Button color="inherit" onClick={() => visit('/register')}>S'inscrire</Button>
+                            <Button color="inherit" onClick={() => visit('/login')}>Se connecter</Button>
+                        </Grid>
+                        <Grid item>
                             <IconButton color="inherit" onClick={showShoppingCart}>
                                 <Badge badgeContent={calculateTotalQuantity()} color="secondary">
+                                    <ShoppingBasketIcon />
                                 </Badge>
-                                <ShoppingBasketIcon/>
                             </IconButton>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Toolbar>
-        </AppBar>
+                </Toolbar>
+            </AppBar>
+            <div style={{ height: '100px' }}></div> 
+        </>
     )
+
+
 }
-
-// import * as React from 'react';
-// import AppBar from '@mui/material/AppBar';
-// import Box from '@mui/material/Box';
-// import Toolbar from '@mui/material/Toolbar';
-// import Typography from '@mui/material/Typography';
-// import Button from '@mui/material/Button';
-// import IconButton from '@mui/material/IconButton';
-// import MenuIcon from '@mui/icons-material/Menu';
-
-// export default function ButtonAppBar() {
-//   return (
-//     <Box sx={{ flexGrow: 1 }}>
-//       <AppBar position="static">
-//         <Toolbar>
-//           <IconButton
-//             size="large"
-//             edge="start"
-//             color="inherit"
-//             aria-label="menu"
-//             sx={{ mr: 2 }}
-//           >
-//             <MenuIcon />
-//           </IconButton>
-//           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-//             News
-//           </Typography>
-//           <Button color="inherit">Login</Button>
-//         </Toolbar>
-//       </AppBar>
-//     </Box>
-//   );
-// }

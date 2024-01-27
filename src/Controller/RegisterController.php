@@ -16,10 +16,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
-class SubscriptionController extends AbstractController
+class RegisterController extends AbstractController
 {
    
-    #[Route('/subscription', name: 'app_subscription')]
+    #[Route('/register', name: 'app_register')]
     public function index(Request $request, UserPasswordHasherInterface $passwordHasher, EntityManagerInterface $entityManager, VerifyEmailHelperInterface $verifyEmailHelper, MailerInterface $mailer): Response
     {
         $user = new User();
@@ -71,7 +71,7 @@ class SubscriptionController extends AbstractController
             }
         }
 
-        return $this->render('security/subscription.html.twig', [
+        return $this->render('security/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }
@@ -86,7 +86,7 @@ class SubscriptionController extends AbstractController
 
         if (!$user) {
             $this->addFlash('error', 'Utilisateur non trouvé.');
-            return $this->redirectToRoute('app_subscription');
+            return $this->redirectToRoute('app_register');
         }
 
         try {
@@ -100,7 +100,7 @@ class SubscriptionController extends AbstractController
             return $this->redirectToRoute('app_home_index'); 
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('error', 'Le lien de vérification nest pas valide.');
-            return $this->redirectToRoute('app_subscription'); 
+            return $this->redirectToRoute('app_register'); 
         }
     }
   
