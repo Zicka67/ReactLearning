@@ -1,22 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "./Header";
 import ProductGrid from './ProductGrid';
 import useShoppingCart from '../hooks/useShoppingCart';
-// import ButtonAppBar from "./testNavBar";
-// import SignInSide from "./SignInSide";
-
-
 
 export default function Home(): React.JSX.Element {
+    const {addItemToShoppingCart, shoppingCart} = useShoppingCart();
+    const isHomePage = window.location.pathname === '/'; 
 
-    const {addItemToShoppingCart, shoppingCart: ShoppingCart} = useShoppingCart();
-
-        return (
-            <>
-                {/* <ButtonAppBar /> */}
-                {/* <SignInSide /> */}
-                {/* <Header shoppingCart={ShoppingCart}/> */}
-                <ProductGrid addItemToShoppingCart={addItemToShoppingCart} shoppingCart={ShoppingCart}/>
-            </>
-        )
-    }
+    return (
+        <>
+            <Header shoppingCart={shoppingCart}/>
+            {isHomePage && <ProductGrid addItemToShoppingCart={addItemToShoppingCart} shoppingCart={shoppingCart}/>}
+        </>
+    );
+}
