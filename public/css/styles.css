@@ -10,3 +10,16 @@ html, body {
   footer {
     margin-top: auto;
   }
+
+  .MuiGrid-root {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+  }
+
+  .MuiBox-root img{
+    width: 268px;
+  height: 268px;
+  object-fit: cover; 
+  }
+  
