@@ -16,38 +16,36 @@ export default function ProductGrid({ addItemToShoppingCart, shoppingCart}) {
 
  
     return (
-        <Grid container marginTop={5}>
-         {products?.map((product) =>(
-            <Grid item key={product.id} xs={4}>
-                <Box sx={{ width: 300, m: 2 }}>
-                    <Paper elevation={3} sx={{ p:2 }}>
+        <Grid container spacing={2} marginTop={5}>
+        {products?.map((product) => (
+            <Grid item key={product.id} xs={3}> 
+                <Box sx={{ width: 300, height: 300, m: 2, display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '100px' }}>
+                    <Paper elevation={3} sx={{ p: 2, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                         <Stack direction="column" spacing={2}>
-                            <Box component='img'sx={{ width: '100%', height: 'auto' }} src={`/images/products/${product.imageName}`}>
+                            <Box sx={{ width: 250, height: 250, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+                            <img src={`/images/products/${product.imageName}`} alt={product.name} style={{ width: 'auto', maxHeight: '100%' }} />
                             </Box>
-
                             <Typography variant="h6" gutterBottom>
                                 {product.name}
                             </Typography>
-
-                            <Box sx={{ display: 'flex', aligneItems: 'center', justifyContent: 'spaceContent' }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                                 <Typography variant="h6" color="secondary">
                                     {formatPrice(product.price)}
                                 </Typography>
                             </Box>
-
-                            <Button variant="outlined" 
-                                color="primary" 
-                                endIcon={<ShoppingBasket/>}
+                            <Button variant="outlined"
+                                color="primary"
+                                endIcon={<ShoppingBasket />}
                                 onClick={() => addItemToShoppingCart(product)}
                             >
-                            {handleProductLabel(product)}
+                                {handleProductLabel(product)}
                             </Button>
                         </Stack>
                     </Paper>
                 </Box>
             </Grid>
-          ))}
-        </Grid>
+        ))}
+    </Grid>
 
         
     )

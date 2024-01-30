@@ -1,11 +1,10 @@
-import { TableContainer, Table, TableCell, TableRow, TableHead, Paper, TableBody, IconButton, Box } from "@mui/material";
+import { TableContainer, Table, TableCell, TableRow, TableHead, TableBody, IconButton, Box} from "@mui/material";
 import React from "react";
 import { ShoppingCartItem } from "../hooks/useShoppingCart";
 import ClearIcon from "@mui/icons-material/Clear";
 
 export default function ShoppingCartTable( {removeItemFromShoppingCart, shoppingCart} ) {
 
-    // Dans le composant ShoppingCartTable
     const totalQuantity = shoppingCart?.items?.reduce((total, item) => total + item.quantity, 0) ?? 0;
     const totalPrice = shoppingCart?.items?.reduce((total, item) => total + item.quantity * item.product.price, 0) ?? 0;
 
@@ -29,8 +28,8 @@ export default function ShoppingCartTable( {removeItemFromShoppingCart, shopping
                             <Box display="flex" flexDirection="row" alignItems="center">
                                 <img 
                                     style={{marginRight: "20px"}}
-                                    width={100} 
-                                    height={100} 
+                                    width={150} 
+                                    height={150} 
                                     src={`/images/products/${item.product.imageName}`}
                                     alt={item.product.name} 
                                 />
@@ -38,7 +37,7 @@ export default function ShoppingCartTable( {removeItemFromShoppingCart, shopping
                             </Box>
                         </TableCell>
                         <TableCell>{item.quantity}</TableCell> 
-                        <TableCell>{item.product.price} €</TableCell>
+                        <TableCell>{(item.product.price / 100).toFixed(2)} €</TableCell>
                         <TableCell>
                             <IconButton onClick={() => removeItemFromShoppingCart(item.product)}>
                                 <ClearIcon />
@@ -49,7 +48,7 @@ export default function ShoppingCartTable( {removeItemFromShoppingCart, shopping
                      <TableRow>
                         <TableCell>Total</TableCell>
                         <TableCell>{totalQuantity}</TableCell>
-                        <TableCell>{totalPrice.toFixed(2)} €</TableCell>
+                        <TableCell>{(totalPrice / 100).toFixed(2)} €</TableCell>
                         <TableCell /> {/* Cette cellule est vide pour correspondre aux autres lignes */}
                     </TableRow>
                 </TableBody>

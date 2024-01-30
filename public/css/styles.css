@@ -17,9 +17,3 @@ html, body {
     flex-wrap: wrap; 
   }
 
-  .MuiBox-root img{
-    width: 268px;
-  height: 268px;
-  object-fit: cover; 
-  }
-  
