@@ -22,7 +22,7 @@ export default function ShoppingCart(){
     return (
         <>
             <Header shoppingCart={shoppingCart} />
-            <Container>
+            <Container sx={{ fontFamily: "'Roboto', sans-serif" }}>
                 <Box marginY={5}> 
                     <Grid container justifyContent="space-between" alignContent="center">
                         <Grid item>
